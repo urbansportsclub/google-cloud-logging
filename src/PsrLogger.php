@@ -137,7 +137,7 @@ class PsrLogger implements LoggerInterface, \Serializable
      */
     public function __construct(
         Logger $logger,
-               $messageKey = null,
+        $messageKey = null,
         array $options = []
     ) {
         $this->logger = $logger;
@@ -150,9 +150,9 @@ class PsrLogger implements LoggerInterface, \Serializable
         if (isset($options['batchEnabled']) && $options['batchEnabled'] === true) {
             $this->batchEnabled = true;
             $this->setCommonBatchProperties($options + [
-                    'identifier' => sprintf(self::ID_TEMPLATE, $this->logger->name()),
-                    'batchMethod' => 'writeBatch'
-                ]);
+                'identifier' => sprintf(self::ID_TEMPLATE, $this->logger->name()),
+                'batchMethod' => 'writeBatch'
+            ]);
         }
     }
 
@@ -395,8 +395,8 @@ class PsrLogger implements LoggerInterface, \Serializable
         if (!empty($labels)) {
             $options['labels'] =
                 (isset($options['labels'])
-                    ? $options['labels']
-                    : []) + $labels;
+                 ? $options['labels']
+                 : []) + $labels;
             // Copy over the value for 'appengine.googleapis.com/trace_id' to
             // `trace` option too.
             if (isset($labels['appengine.googleapis.com/trace_id'])) {
@@ -413,8 +413,8 @@ class PsrLogger implements LoggerInterface, \Serializable
         if (!empty($resource)) {
             $options['resource'] =
                 (isset($options['resource'])
-                    ? $options['resource']
-                    : []) + $resource;
+                 ? $options['resource']
+                 : []) + $resource;
         }
         $entry = $this->logger->entry(
             $jsonPayload + $processedData['context'],
@@ -491,7 +491,7 @@ class PsrLogger implements LoggerInterface, \Serializable
             $this->batchMethod,
             $this->logName,
             $debugOutputResource
-            ) = $data;
+        ) = $data;
 
         if (is_array($debugOutputResource)) {
             $this->debugOutputResource = fopen(
